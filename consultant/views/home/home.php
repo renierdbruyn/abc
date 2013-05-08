@@ -1,11 +1,11 @@
 <?php
-  require_once ('../classes/mysql.php');
-  $db = new Mysql();
-  $db->connect();
+//include_once ('../classes/mysql.php');
 
-//$query= "SELECT ad.Adv_id, ad.Ap_id, ad.Adv_title, ap.Ap_name FROM applicant_jobs, advert, applicant ";
-$query = "SELECT Adv_id, Adv_title FROM adverts";
-$result = mysql_query($query);
+
+/**
+  //$query= "SELECT ad.Adv_id, ad.Ap_id, ad.Adv_title, ap.Ap_name FROM applicant_jobs, advert, applicant ";
+ * 
+ */
 ?>
 
 
@@ -102,21 +102,20 @@ $result = mysql_query($query);
                     <div class="inner">
                         <article>
                             <h1 class="color_orange">Job ID List:</h1>
-                            <?php
-                            echo "<table border=\"0\" align=\"center\">";
-                            echo "<tr><th>Advert ID</th>";
-                            echo "<th>Advert Title</th></tr>";
-                            while ($row = mysql_fetch_row($result)) {
-                                for ($i = 0; $i <= 10; $i++) {
-                                    //  printf("%s (%s) <br/>", $row[0], $row[1]);
-                                    //echo"Job id: $row[$i] &nbsp;";                                               // echo "Job title: $title <br/>";
-                                    echo "<tr><td>";
-                                    echo $row[0];
-                                    echo "</td><td>";
-                                    echo $row[1];
-                                    echo "</td></tr>";
-                                }
-                            }
+                            <?php                            
+                            $database = new Mysql();
+                            $database->connect();                           
+                            /** $query = "SELECT Adv_id, Adv_title FROM adverts";
+                              $result = mysql_query($query) or die(mysql_error());
+
+                              echo '<table>';
+                              while ($row = mysql_fetch_array($result)) {
+                              echo '<tr>
+                              <td>' . $row['Adv_id'] . '</td><td>' . $row['Adv_title'] . '</tr>';
+                              }
+                              echo '</table>';
+                             * 
+                             */
                             ?>
                         </article>
                     </div>
@@ -133,7 +132,7 @@ $result = mysql_query($query);
                             <h6>The consultant is able to view the previously uploaded job adverts or Upload the new Job Adverts.
                             </h6>
 
-                            <iframe width="500" height="400" name ="upload" src="upload.src.php" scrolling="no"frameborder="0" > </iframe>
+                            <iframe width="500" height="400" name ="upload" src="upload.src.php" scrolling="no" frameborder="0" > </iframe>
 
                         </article>
                     </div>
